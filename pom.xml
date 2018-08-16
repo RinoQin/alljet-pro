@@ -16,6 +16,7 @@
         <module>alljet-bbs-service</module>
         <module>alljet-api</module>
         <module>alljet-web</module>
+        <module>alljet-persist</module>
     </modules>
 
     <properties>
