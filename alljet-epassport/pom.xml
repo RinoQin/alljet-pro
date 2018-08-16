@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>alljet-pro</artifactId>
+        <groupId>org.alljet</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.alljet</groupId>
+    <artifactId>alljet-epassport</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.alljet</groupId>
+            <artifactId>alljet-common-biz</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.activation>profile/dev</profiles.activation>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.activation>profile/test</profiles.activation>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.activation>profile/prod</profiles.activation>
+            </properties>
+        </profile>
+
+    </profiles>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <excludes>
+                    <exclude>profile/dev/*</exclude>
+                    <exclude>profile/test/*</exclude>
+                    <exclude>profile/prod/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 包含，若没有指定则默认为 activeByDefault 标签定义的profile -->
+                <includes>
+                    <include>${profiles.activation}/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>

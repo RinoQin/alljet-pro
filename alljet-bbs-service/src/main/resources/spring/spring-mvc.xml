@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+   	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+   	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+   	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+   	">
+
+
+    <context:annotation-config />
+    <context:property-placeholder location="classpath:application.properties" />
+
+    <!--  基于JDK动态代理 ，可以将@Transactional放置在接口和具体类上。
+            基于CGLIB类代理，只能将@Transactional放置在具体类上。 -->
+    <!-- switch expose aop proxy for threadlocal support -->
+    <!-- XML configuration Support -->
+    <!-- <aop:config expose-proxy="true" proxy-target-class="true"/> -->
+    <aop:config proxy-target-class="true"/>
+
+    <!-- Define aspectj for which class not interfaced forced to Cglib, since jdk proxy not supported-->
+    <!-- Annotation Support -->
+    <!-- <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/> -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- <context:component-scan base-package="org.alljet.web"></context:component-scan> -->
+    <!-- 使用Annotation自动注册Bean，在SpringMvc中只扫描@Controller注解。
+        Use-dafault-filters=”true”的情况下：<context:exclude-filter>生效，<context:include-filter>无效
+        Use-dafault-filters=”false”的情况下：<context:exclude-filter>生效，<context:include-filter>生效
+        base-package 如果多个，用“,”分隔   -->
+    <context:component-scan base-package="org.alljet" />
+
+
+
+    <bean id="webHandler" class="org.springframework.web.reactive.DispatcherHandler">
+
+    </bean>
+
+
+</beans>
