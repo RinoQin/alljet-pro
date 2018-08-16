@@ -38,7 +38,7 @@ public class DispatcherServletChannelInitializer extends ChannelInitializer<Sock
      * @param configLocation
      * @throws ServletException
      */
-    public DispatcherServletChannelInitializer (String charset, String env, String ... configLocation) throws ServletException{
+    public DispatcherServletChannelInitializer (String charset, /*String env,*/ String ... configLocation) throws ServletException{
         this.charset = charset;
 
         MockServletContext servletContext = new MockServletContext();
@@ -48,7 +48,7 @@ public class DispatcherServletChannelInitializer extends ChannelInitializer<Sock
         wac.setServletContext(servletContext);
         wac.setServletConfig(servletConfig);
         wac.setConfigLocations(configLocation);
-        wac.getEnvironment().addActiveProfile(env);
+        //wac.getEnvironment().addActiveProfile(env);
         this.dispatcherServlet = new DispatcherServlet(wac);
         this.dispatcherServlet.init(servletConfig);
     }

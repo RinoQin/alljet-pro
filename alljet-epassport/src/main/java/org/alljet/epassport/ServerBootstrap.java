@@ -20,7 +20,7 @@ public class ServerBootstrap {
 
         String configLocation = properties.get("sys.contextConfigLocation").toString();
 
-        NettyServer server = new NettyServer(appId, port, charset, Environment.valueOf(System.getProperty("environment")), configLocation.split(","));
+        NettyServer server = new NettyServer(appId, port, charset, /*Environment.valueOf(System.getProperty("environment")),*/ configLocation.split(","));
         try {
             server.start();
             System.out.print("epassport-service done...");
