@@ -3,6 +3,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+
 # Package Files #
 *.jar
 *.war
@@ -13,8 +14,9 @@ hs_err_pid*
 /.idea/
 LOG_HOME_IS_UNDEFINED
 target
-.settings
-.project
-.classpath
-.log
-.iml
+*.settings
+*.project
+*.classpath
+*.log
+
+*.iml
