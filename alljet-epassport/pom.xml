@@ -28,7 +28,9 @@
             <properties>
                 <profiles.activation>profile/dev</profiles.activation>
             </properties>
-
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
 
         <profile>
@@ -36,9 +38,7 @@
             <properties>
                 <profiles.activation>profile/test</profiles.activation>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+
         </profile>
 
         <profile>
