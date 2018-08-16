@@ -1,4 +1,4 @@
-package org.alljet.api;
+package org.alljet.bbs;
 
 public class Test {
 

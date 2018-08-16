@@ -1,4 +1,4 @@
-package org.alljet;
+package org.alljet.blog;
 
 public class blog {
 }
